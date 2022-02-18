@@ -8,20 +8,19 @@ import pyautogui as py
 import csv
 
 def capt(str_inp):
+    global json_data
     ms=py.screenshot()
-    path="D:\EE\DealerCheck\Tata\SS\ "
-    path=path.strip()
-    path+=str_inp+".jpeg"
-    print(path)
+    path=json_data['ss_folder']+str_inp+".jpeg"
     ms.save(path)
 
-def ErrorWrite(city,dealer_name,reason,ss_name):
-    global json_data
+def ErrorWrite(car,city,dealer_name,reason,ss_name):
+    global json_data,driver
     temp=dealer_name.split('-')[0]
     with open(json_data['error_csv_file_name'],'a') as f:
+        print("writng")
         writer=csv.writer(f)
         capt(ss_name)
-        writer.writerow([city,dealer_name,reason,ss_name])
+        writer.writerow([car,city,dealer_name,reason,ss_name,driver.current_url])
 
 def Site_Run(car,city,dealer_name):
     global json_data,driver
@@ -44,8 +43,8 @@ def Site_Run(car,city,dealer_name):
         elif error_type==2:
             print("DEALER ",dealer_name," not present in city ",city)
             reason="DEALER FAIL"
-        ss_name=city+" "+dealer_name.split('-')[0]
-        ErrorWrite(city,dealer_name,reason,ss_name)
+        ss_name=car+' '+city+" "+dealer_name.split('-')[0]+reason
+        ErrorWrite(car,city,dealer_name,reason,ss_name)
 
 def get_data(car):
     global json_data
