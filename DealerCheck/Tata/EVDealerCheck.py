@@ -92,7 +92,7 @@ def removed_dealers(city, dealer_name):
     finally:
         return
 
-def ev_dealer_check_start():
+def ev_dealer_check_start(car):
     global json_data,driver
 
     try:
@@ -109,19 +109,15 @@ def ev_dealer_check_start():
         driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
 
         count=4
-        car_list = ["nexon_ev", "tigor_ev"]
-        for i in car_list:
-            if json_data[i+'_check']!='Y':
-                print(i,' skipped')
-                continue
-            driver.get(json_data[i+'_url'])
-            driver.maximize_window()
-            time.sleep(6)
-            try:driver.find_element(By.XPATH,'//*[@id="gradient"]/div/div[2]/div[2]/div/button').click()#Checkout button tigor
-            except:driver.find_element(By.XPATH,'/html/body/app-root/app-variants/div[2]/div/div/div[2]/div[2]/div').click()#Checkout button nexon
-            time.sleep(5)
-            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")#Scrolling down on checkout page
-            get_data(i.split('_')[0]+" ev")
+        print(car)
+        driver.get(json_data[car+'_url'])
+        driver.maximize_window()
+        time.sleep(6)
+        try:driver.find_element(By.XPATH,'//*[@id="gradient"]/div/div[2]/div[2]/div/button').click()#Checkout button tigor
+        except:driver.find_element(By.XPATH,'/html/body/app-root/app-variants/div[2]/div/div/div[2]/div[2]/div').click()#Checkout button nexon
+        time.sleep(5)
+        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")#Scrolling down on checkout page
+        get_data(car)
     except Exception as err:
         print(err)
         if count==1:
@@ -137,4 +133,3 @@ def ev_dealer_check_start():
         driver.close()
         driver.quit()
 
-ev_dealer_check_start()

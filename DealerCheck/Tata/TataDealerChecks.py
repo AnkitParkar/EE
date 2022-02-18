@@ -112,7 +112,7 @@ def GetDataB(car):
         print("All entries done")
     driver.find_element(By.CLASS_NAME, "close-btnm").click()
 
-def tata_dealer_checks_start():
+def tata_dealer_checks_start(car):
     global json_data,driver
     try:
         count = 1
@@ -128,26 +128,11 @@ def tata_dealer_checks_start():
         driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
 
         count = 4
-        car_list = ["harrier", "tigor", "tiago"]
-        for i in car_list:
-            if json_data[i+'_check']!='Y':
-                print(i,' skipped')
-                continue
-            print(i)
-            driver.get(json_data[i+'_url'])
-            driver.maximize_window()
-            GetDataA(i)
-
-        car_list = ["safari_imag", "punch", "nexon_imag", "altroz", "safari","altroz_imag"]
-
-        for i in car_list:
-            if json_data[i+'_check']!='Y':
-                print(i,' skipped')
-                continue
-            print(i)
-            driver.get(json_data[i+'_url'])
-            driver.maximize_window()
-            GetDataB(i)
+        print(car)
+        driver.get(json_data[car + '_url'])
+        driver.maximize_window()
+        if car in ["harrier", "tigor", "tiago"]: GetDataA(car)
+        else: GetDataB(car)
 
     except Exception as err:
         print(err)
@@ -164,4 +149,3 @@ def tata_dealer_checks_start():
         driver.close()
         driver.quit()
 
-tata_dealer_checks_start()
