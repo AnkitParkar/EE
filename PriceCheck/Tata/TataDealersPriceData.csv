@@ -1,0 +1,109 @@
+Car,Type,Variant,Booking Price,Showroom Price,Acc
+tiago,manual,NRG,11000,0,0
+tiago,manual,XE,11000,0,0
+tiago,manual,XT,11000,0,0
+tiago,manual,XZ,11000,0,0
+tiago,manual,XZ+,11000,0,0
+tiago,manual,XZ+DT,11000,0,0
+tiago,manual,XTO,11000,0,0
+tiago,automatic,NRGA,11000,0,0
+tiago,automatic,XZA,11000,0,0
+tiago,automatic,XZA+,11000,0,0
+tiago,automatic,XZA+DT,11000,0,0
+tiago,automatic,XTA,11000,0,0
+tiago,cng,XZ+ CNG,11000,0,0
+tiago,cng,XZ+ DT CNG,11000,0,0
+tiago,cng,XM CNG,11000,0,0
+tiago,cng,XT CNG,11000,0,0
+tigor,manual,XE,11000,0,0
+tigor,manual,XM,11000,0,0
+tigor,manual,XZ,11000,0,0
+tigor,manual,XZ+,11000,0,0
+tigor,automatic,XMA,11000,0,0
+tigor,automatic,XZA+,11000,0,0
+tigor,cng,XZ+ CNG,11000,0,0
+tigor,cng,XZ CNG,11000,0,0
+altroz,petrol,XZ+ Dark,21000,879900,0
+altroz,petrol,XZ+ i-TURBO Dark,21000,939900,0
+altroz,petrol,XE,21000,599900,0
+altroz,petrol,XE+,21000,639900,0
+altroz,petrol,XM+,21000,699900,0
+altroz,petrol,XT,21000,749900,0
+altroz,petrol,XT i-TURBO,21000,809900,0
+altroz,petrol,XZ,21000,799900,0
+altroz,petrol,XZ i-TURBO,21000,871900,0
+altroz,petrol,XZ(O),21000,811900,0
+altroz,petrol,XZ+,21000,849900,0
+altroz,petrol,XZ+ i-TURBO,21000,909900,0
+altroz,diesel,XE,21000,719900,0
+altroz,diesel,XE+,21000,759900,0
+altroz,diesel,XM+,21000,819900,0
+altroz,diesel,XT,21000,869900,0
+altroz,diesel,XZ,21000,919900,0
+altroz,diesel,XZ(O),21000,931900,0
+altroz,diesel,XZ+,21000,969900,0
+punch,automatic,Punch Creative AMT,21000,898900,30000
+punch,automatic,Accomplish AMT,21000,799900,45000
+punch,automatic,Adventure AMT,21000,709900,35000
+punch,manual,Creative,21000,838900,30000
+punch,manual,Accomplish,21000,739900,45000
+punch,manual,Adventure,21000,649900,35000
+punch,manual,Pure,21000,564900,35000
+safari,automatic,XZA+ Dark 7S,30000,0,0
+safari,automatic,XZA+ Dark 6S,30000,0,0
+safari,automatic,XTA+ Dark 7S,30000,0,0
+safari,automatic,XZA+ Gold 6S,30000,0,0
+safari,automatic,XZA+ Gold 7S,30000,0,0
+safari,automatic,XZA+ 7S,30000,0,0
+safari,automatic,XZA+ 6S,30000,0,0
+safari,automatic,XZA 7S,30000,0,0
+safari,automatic,XMA 7S,30000,0,0
+safari,automatic,XTA+ 7S,30000,0,0
+safari,automatic,XZA+ Adventure 6S,30000,0,0
+safari,automatic,XZA+ Adventure 7S,30000,0,0
+safari,manual,XT+ Dark 7S,30000,0,0
+safari,manual,XZ+ Dark 7S,30000,0,0
+safari,manual,XZ+ Dark 6S,30000,0,0
+safari,manual,XZ+ Gold 6S,30000,0,0
+safari,manual,XZ+ Gold 7S,30000,0,0
+safari,manual,XZ+ Adventure 7S,30000,0,0
+safari,manual,XZ+ Adventure 6S,30000,0,0
+safari,manual,XZ+ 6S,30000,0,0
+safari,manual,XZ+ 7S,30000,0,0
+safari,manual,XZ 7S,30000,0,0
+safari,manual,XT+ 7S,30000,0,0
+safari,manual,XT 7S,30000,0,0
+safari,manual,XM 7S,30000,0,0
+safari,manual,XE 7S,30000,0,0
+tigor_ev,ev,XZ+ DT,21000,1314000,0
+tigor_ev,ev,XZ+,21000,1299000,0
+tigor_ev,ev,XM,21000,1249000,0
+tigor_ev,ev,XE,21000,1199000,0
+harrier,manual,XE,30000,0,0
+harrier,manual,XM,30000,0,0
+harrier,manual,XT,30000,0,0
+harrier,manual,XT+,30000,0,0
+harrier,manual,XT+ Dark Edition,30000,0,0
+harrier,manual,XZ,30000,0,0
+harrier,manual,XZ Dual Tone,30000,0,0
+harrier,manual,XZ+,30000,0,0
+harrier,manual,XZ+ Dual Tone,30000,0,0
+harrier,automatic,XMA,30000,0,0
+harrier,automatic,XZA,30000,0,0
+harrier,automatic,XZA Dual Tone,30000,0,0
+harrier,automatic,XZA+,30000,0,0
+harrier,automatic,XZA+ Dual Tone,30000,0,0
+harrier,automatic,XTA+,30000,0,0
+nexon_imag,manual,NEXON(P)XZ+ Dark,11000,0,0
+nexon_imag,manual,NEXON(D)XZ+ Dark,11000,0,0
+nexon_imag,manual,NEXON(D)XZ+ (O)Dark,11000,0,0
+nexon_imag,manual,NEXON(P)XZ+ (O)Dark,11000,0,0
+nexon_imag,automatic,NEXON(P)XZ+ Dark,11000,0,0
+nexon_imag,automatic,NEXON(D)XZ+ Dark,11000,0,0
+nexon_imag,automatic,NEXON(D)XZ+ (O)Dark,11000,0,0
+nexon_imag,automatic,NEXON(P)XZ+ (O)Dark,11000,0,0
+nexon_ev,ev,Dark XZ+ Lux,21000,1690000,
+nexon_ev,ev,Dark XZ+ ,21000,1604000,
+nexon_ev,ev,XZ+ Lux,21000,1670000,
+nexon_ev,ev,XZ+,21000,1570000,
+nexon_ev,ev,XM,21000,1429000,
