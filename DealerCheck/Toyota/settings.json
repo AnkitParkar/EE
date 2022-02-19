@@ -1,0 +1,12 @@
+{
+  "url": "https://www.toyotabharat.com/online-booking/?model-id=16",
+  "type": "dealer",
+  "dealer_csv_name": "ToyotaDealers.csv",
+  "removed_dealer_csv_name": "",
+  "error_csv_file_name": "D:/EE/DealerCheck/Toyota/ErrorLog.csv",
+  "ss_folder": "SS",
+  "username": "",
+  "password": "",
+  "require_auth":"N",
+  "space_check": "N"
+}
