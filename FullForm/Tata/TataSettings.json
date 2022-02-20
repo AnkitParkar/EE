@@ -1,0 +1,46 @@
+{
+  "prices_csv_path": "D:/EE/PriceCheck/Tata/TataDealersPriceData.csv",
+
+  "tigor_url": "https://testbookonline.tatamotors.com/tigor/#/new-customer/0",
+
+  "tiago_url": "https://testbookonline.tatamotors.com/tiago/#/new-customer/0",
+
+  "safari_url": "https://testbookonline.tatamotors.com/safari/#/variant",
+
+  "punch_url": "https://testbookonline.tatamotors.com/punch/#/variant",
+
+  "altroz_url": "https://testbookonline.tatamotors.com/altroz/#/variant",
+
+  "harrier_url": "https://harriertest.tatamotors.com/bookonline/#/new-customer/0",
+
+  "nexon_ev_url": "https://testbookonline.tatamotors.com/nexonev/#/variants",
+  "nexon_ev_json_name": "nexon_ev_prices.json",
+
+  "tigor_ev_url": "https://testbookonline.tatamotors.com/tigor-ev/#/variants",
+
+  "altroz_imag_url": "https://imaginatortest.tatamotors.com/altroz/#/variants",
+
+  "nexon_imag_url": "https://imaginatortest.tatamotors.com/nexon/",
+
+  "safari_imag_url": "https://imaginatortest.tatamotors.com/safari/",
+
+  "error_csv_path":"D:/EE/FullForm/Tata/ErrorLog.csv",
+  
+  "username": "tmbook",
+  "password": "Mnha#452$hja",
+  "write_error": "Y",
+  "take_ss": "N",
+  "service_path":"D:/EE/chromedriver.exe",
+  "proxy":"11.456.448.110:8080",
+  "tiago_check": "N",
+  "tigor_check": "Y",
+  "safari_check": "N",
+  "punch_check": "N",
+  "altroz_check": "N",
+  "harrier_check": "N",
+  "nexon_ev_check": "N",
+  "tigor_ev_check": "Y",
+  "altroz_imag_check": "N",
+  "nexon_imag_check": "N",
+  "safari_imag_check": "N"
+}
