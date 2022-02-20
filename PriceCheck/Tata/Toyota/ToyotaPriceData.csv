@@ -1,0 +1,42 @@
+Car,Type,Variant,Showroom Price,Price,Booking Price
+glanza,petrol_automatic,G,8.9,890000,11000
+glanza,petrol_automatic,V,9.66,966000,11000
+glanza,petrol_manual,G,7.7,770000,11000
+glanza,petrol_manual,V,8.46,846000,11000
+glanza,petrol_manual,G-Advanced Li-Ion battery,8.59,859000,11000
+urban cruiser,petrol_automatic,Mid AT,9.99,999900,11000
+urban cruiser,petrol_automatic,High AT,10.87,1087500,11000
+urban cruiser,petrol_automatic,Premium AT,11.85,1158000,11000
+urban cruiser,petrol_manual,Mid MT,8.87,887500,11000
+urban cruiser,petrol_manual,High MT,9.62,962500,11000
+urban cruiser,petrol_manual,Premium MT,9.99,999900,11000
+innova crysta,petrol_manual,2.7 GX (-) 7S MT,,1689000,25000
+innova crysta,petrol_manual,2.7 GX (-) 8S MT,,1694000,25000
+innova crysta,petrol_manual,2.7 GX 7S MT,,1730000,25000
+innova crysta,petrol_manual,2.7 GX 8S MT,,1735000,25000
+innova crysta,petrol_manual,2.7 VX 7S MT,,2059000,25000
+innova crysta,diesel_manual,2.4 VX 7S MT,,2248000,25000
+innova crysta,diesel_manual,2.4 G 7S MT,,1818000,25000
+innova crysta,diesel_manual,2.4 G 8S MT,,1823000,25000
+innova crysta,diesel_manual,2.4 VX 8S MT,,2253000,25000
+innova crysta,diesel_manual,2.4 ZX 7S MT,,2412000,25000
+innova crysta,diesel_manual,2.4 G+ 7S MT,,1899000,25000
+innova crysta,diesel_manual,2.4 G+ 8S MT,,1904000,25000
+innova crysta,diesel_manual,2.4 GX 7S MT,,1911000,25000
+innova crysta,diesel_manual,2.4 GX 8S MT,,1916000,25000
+innova crysta,diesel_automatic,2.4 GX 7S AT,,2042000,25000
+innova crysta,diesel_automatic,2.4 GX 8S AT,,2047000,25000
+innova crysta,diesel_automatic,2.4 ZX 7S AT,,2532000,25000
+innova crysta,petrol_automatic,2.7 GX 7S AT,,1866000,25000
+innova crysta,petrol_automatic,2.7 GX 8S AT,,1871000,25000
+innova crysta,petrol_automatic,2.7 ZX 7S AT,,2347000,25000
+fortuner,petrol_automatic,(2.7L) 4x2 AT,32.98,3298000,25000
+fortuner,petrol_manual,(2.7L) 4x2 MT,31.39,3139000,25000
+fortuner,diesel_automatic,(2.8L) 4x2 AT,36.17,3617000,25000
+fortuner,diesel_automatic,(2.8L) 4X4 AT,39.28,3928000,25000
+fortuner,diesel_manual,(2.8L) 4x2 MT,33.89,3389000,25000
+fortuner,diesel_manual,(2.8L) 4x4 MT,36.99,3699000,25000
+legender,diesel_automatic,(2.8L) 4x2 AT,39.71,3971000,25000
+legender,diesel_automatic,(2.8L) 4x4 AT,43.43,4343000,25000
+camry,hybrid_automatic,Camry Hybrid,41.7,4170000,50000
+vellfire,hybrid_automatic,The Executive Lounge,89.9,8990000,100000
