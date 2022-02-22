@@ -10,7 +10,6 @@
   "altroz_url": "https://testbookonline.tatamotors.com/altroz/#/checkout",
   "harrier_url": "https://harriertest.tatamotors.com/bookonline/#/new-customer/0",
   "nexon_ev_url": "https://testbookonline.tatamotors.com/nexonev/#/variants",
-  "type": "dealer",
   "dealer_csv_name": "NewDealers.csv",
   "ev_dealer_csv_name": "EVDealers.csv",
   "removed_dealer_csv_name": "RemovedDealerships.csv",
