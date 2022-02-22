@@ -103,18 +103,32 @@ def altroz_price_check():
 def altroz_start():
     global json_data, df, driver
 
-    f = open('D:/EE/PriceCheck/Tata/TataSettings.json')
-    json_data = json.load(f)
-    f.close()
+    try:
+        error_count = 1
+        f = open('TataSettings.json')
+        json_data = json.load(f)
+        f.close()
 
-    cols = ["Car", "Type", "Variant", "Booking Price", "Showroom Price", "Acc"]
-    df = pd.read_csv(json_data["prices_csv_path"], usecols=cols)
-    temp_df = pd.DataFrame()
-    s = Service(json_data["service_path"])
-    chrome_options = webdriver.ChromeOptions().add_argument('--proxy-server=%s' % json_data["proxy"])
-    driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
+        error_count = 2
+        cols = ["Car", "Type", "Variant", "Booking Price", "Showroom Price", "Acc"]
+        df = pd.read_csv(json_data["prices_csv_path"], usecols=cols)
+        temp_df = pd.DataFrame()
 
-    altroz_price_check()
-    driver.close()
-    driver.quit()
+        error_count = 3
+        s = Service(json_data["service_path"])
+        chrome_options = webdriver.ChromeOptions().add_argument('--proxy-server=%s' % json_data["proxy"])
+        driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
+    except:
+        if error_count == 1:
+            print('Issue with settings json file')
+        elif error_count == 2:
+            print('Issue with reading price csv file')
+        elif error_count == 3:
+            print('Issue with chromedriver initialisation')
+
+    try:
+        altroz_price_check()
+    finally:
+        driver.close()
+        driver.quit()
     print('altroz Done')
