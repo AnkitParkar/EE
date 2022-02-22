@@ -18,5 +18,9 @@ For EV Dealer checks, the columns are State, Dealer, Trade Name, CPM Location Na
 You should either store the csv file in the same directory/folder or the absolute path should be provided. 
 
 For the rest of the cars (Tiago, Tigor, Harrier, Safari, Altroz, Altroz Imaginator, Nexon Imaginator, Punch), the columns in the dealer files are 'State ,City, Trade Name ,Dealer 
-Name' . You should either store the csv file in the same directory/folder or the absolute path should be provided. 
+Name' . You should either store the csv file in the same directory/folder or the absolute path should be provided.  The name of the csv has to be updated in the TataSettings.json file, 
+'dealer_csv_name'.
 
+You also need to make a file to store the errors. It should be a csv file and you have to update the name in TataSettings.json, 'error_csv_file_name' . 
+
+You also have to make a folder to store the screenshots of the errors. The folder name should be updates in TataSettings.json, 'ss_folder' .
