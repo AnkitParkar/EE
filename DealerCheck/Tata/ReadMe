@@ -9,3 +9,14 @@ and if you do not want to check for tigor, it should be
 'tigor_check':'N',
 
 The script to be run is MainCon.py 
+For the script to run, you need to install Selenium, json, pyautogui, csv for python.
+
+You also need to download chromedriver and extract it. The version should be the same as the chrome version on your system. 
+You need to copy the absolute path of the chromedriver and paste it in the TataSettings.json file for the key 'chromedriver_path'
+
+For EV Dealer checks, the columns are State, Dealer, Trade Name, CPM Location Name . The name of the csv has to be updated in the TataSettings.json file, 'ev_dealer_csv_name'. 
+You should either store the csv file in the same directory/folder or the absolute path should be provided. 
+
+For the rest of the cars (Tiago, Tigor, Harrier, Safari, Altroz, Altroz Imaginator, Nexon Imaginator, Punch), the columns in the dealer files are 'State ,City, Trade Name ,Dealer 
+Name' . You should either store the csv file in the same directory/folder or the absolute path should be provided. 
+
