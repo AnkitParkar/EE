@@ -1,0 +1,11 @@
+The name for TataSettings.json should not be changed and it should be stored in the same directory/folder as the scripts. 
+For TataSettings.json:
+1. The names for the URL should not be changed. Only the URL's themselves can be updated. 
+2. The URL should be to the checkout page/booking page and not the website for the car. 
+
+To check only for specific cars, assign the value as Y instead of N. For example if you want to check for tiago, it should be
+'tiago_check':'Y',
+and if you do not want to check for tigor, it should be 
+'tigor_check':'N',
+
+The script to be run is MainCon.py 
