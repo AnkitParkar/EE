@@ -1,0 +1,15 @@
+The name for ToyotaSettings.json should not be changed and it should be stored in the same directory/folder as the scripts. 
+For ToyotaSettings.json:
+1. The url should be for the toyota booking site.
+
+The script to be run is ToyotaDealerChecks.py 
+For the script to run, you need to install Selenium, json, pyautogui, csv for python.
+
+You also need to download chromedriver and extract it. The version should be the same as the chrome version on your system.  
+You need to copy the absolute path of the chromedriver executable and paste it in the TataSettings.json file for the key 'chromedriver_path'
+
+The dealer csv should be in the same directory/folder or the absolute path should be stored in ToyotaSettings.json in 'dealer_csv_name'.
+
+You also need to make a file to store the errors. It should be a csv file and you have to update the name in TataSettings.json, 'error_csv_file_name' . 
+
+You also have to make a folder to store the screenshots of the errors. The folder name should be updates in TataSettings.json, 'ss_folder' .
