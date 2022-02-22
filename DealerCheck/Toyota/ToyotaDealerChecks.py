@@ -6,21 +6,26 @@ import time
 import json
 import pandas as pd
 import csv
+import pyautogui as py
 
-json_data=dict()
-s=Service("D:/EE/chromedriver.exe")
-PATH= "D:/EE/chromedriver.exe"
-PROXY = "11.456.448.110:8080"
-chrome_options = webdriver.ChromeOptions().add_argument('--proxy-server=%s' % PROXY)
-driver=webdriver.Chrome(service=s,chrome_options=chrome_options)
+def capt(str_inp):
+    global json_data
+    ms=py.screenshot()
+    path=json_data["ss_folder"].strip()+str_inp+".jpeg"
+    ms.save(path)
+
 
 def Error_log(state,city,dealer,reason,url):
+    global json_data
     with open(json_data['error_csv_file_name'], 'a') as f:
         writer = csv.writer(f)
         writer.writerow([state, city, dealer, reason,  url])
+        ss_name = state + " " + city + " " + dealer
+        capt(ss_name)
 
 def Site_run(state, city):
-    global df
+    global df,json_data,driver
+    print('In Site_run')
     dealer_df=df.loc[(df['State']==state) & (df['City']==city)]
 
     try:
@@ -45,10 +50,7 @@ def Site_run(state, city):
         temp=cur.text
         hg=temp.split('\n')
         dealer_list=list()
-        for i in hg:
-            dealer_list.append(i)
-        # while(len(dealer_list)>0):
-        #     print(state,":",city,":",dealer_list.pop())
+        for i in hg: dealer_list.append(i)
 
         for dealer in dealer_df['Dealer'].tolist():
             if dealer not in dealer_list:
@@ -62,36 +64,48 @@ def Site_run(state, city):
         elif error_type==3: reason="DEALER FAIL"
         Error_log(state, city, cur_dealer, reason,driver.current_url)
 
-
-def init_driver():
-    global json_data,driver,dealer_df,city_df
-
-    driver.maximize_window()
-    driver.get(json_data['url'])
-    time.sleep(10)
-    cur=driver.find_element(By.ID,"btnDealerLocator")
-    cur.click()
-
 def tr():
-    global json_data
-    f = open('ToyotaSettings.json')
-    json_data = json.load(f)
-    f.close()
+    global json_data,df
+    try:
+        f = open('ToyotaSettings.json')
+        json_data = json.load(f)
+        f.close()
+    except:
+        print('Issue with ToyotaSettings.json File. Make sure it is in the same directory.')
 
+def start():
+    global json_data,driver,df
+    try:tr()
+    except:print("Error with the ToyotaSettings.json file")
+    try:
+        error_count=1
+        s = Service(json_data['chromedriver_path'])
+        chrome_options = webdriver.ChromeOptions().add_argument('--proxy-server=%s' % json_data['proxy'])
+        driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
 
-try:
-    tr()
-    init_driver()
-    cols=['State','City',"Dealer"]
-    df=pd.read_csv(json_data["dealer_csv_name"],usecols=cols)
-    with open(json_data['dealer_csv_name'],'r') as r:
-        reader=csv.reader(r)
-        next(reader)
-        for i in reader:
-            Site_run(i[0],i[1])
-except Exception as err:
-    print("init",err)
+        error_count=2
+        driver.get(json_data['url'])
+        driver.maximize_window()
+        time.sleep(10)
+        cur = driver.find_element(By.ID, "btnDealerLocator")
+        cur.click()
 
-finally:
-    time.sleep(10)
-    driver.close()
+        error_count=3
+        cols=['State','City',"Dealer"]
+        df=pd.read_csv(json_data["dealer_csv_name"],usecols=cols)
+        with open(json_data['dealer_csv_name'],'r') as r:
+            reader=csv.reader(r)
+            next(reader)
+            for i in reader:Site_run(i[0],i[1])
+
+    except Exception as err:
+        print("init",err)
+        if error_count==1: print('Error with chromedriver')
+        elif error_count==2: print('Error with url')
+        elif error_count==3: print('Error with running script')
+
+    finally:
+        time.sleep(10)
+        driver.close()
+        driver.quit()
+start()
