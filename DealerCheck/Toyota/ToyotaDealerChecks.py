@@ -74,7 +74,7 @@ def init_driver():
 
 def tr():
     global json_data
-    f = open('settings.json')
+    f = open('ToyotaSettings.json')
     json_data = json.load(f)
     f.close()
 
