@@ -5,6 +5,7 @@
   "removed_dealer_csv_name": "",
   "error_csv_file_name": "",
   "chromedriver_path":"D://EE//chromedriver.exe",
+  "proxy":"11.456.448.110:8080",
   "ss_folder": "SS",
   "username": "",
   "password": "",
