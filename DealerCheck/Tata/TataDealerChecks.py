@@ -1,14 +1,22 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support import wait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-import json
+import json,csv,time,os
 import pyautogui as py
-import csv
-import time
+import pandas as pd
 
 def ErrorWrite(car,state,city,dealer_name,reason,url):
-    temp=dealer_name.split('-')[0]
+    global json_data
+    if (os.path.exists(json_data['error_csv_file_name'])) == False:
+        em = pd.DataFrame(list())
+        em.to_csv('ErrorLogs.csv')
+        json_data['error_csv_file_name'] = os.getcwd() + '/ErrorLogs.csv'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
+
     with open(json_data["error_csv_file_name"],'a') as f:
         writer=csv.writer(f)
         ss_name = car + state + " " + city + " " + dealer_name
@@ -16,8 +24,16 @@ def ErrorWrite(car,state,city,dealer_name,reason,url):
         capt(ss_name)
 
 def capt(str_inp):
+    global json_data
+    if os.path.exists(json_data['ss_folder'])==False:
+        name='SS_FOLDER'
+        os.mkdir(name)
+        json_data['ss_folder'] = os.getcwd()+'/SS_FOLDER'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
     ms=py.screenshot()
-    path=json_data["ss_folder"].strip()+str_inp+".jpeg"
+    path=json_data["ss_folder"].strip()+'/'+str_inp+".jpeg"
     ms.save(path)
 
 def Site_RunA(car,state,city,dealer_name):
@@ -29,11 +45,14 @@ def Site_RunA(car,state,city,dealer_name):
         time.sleep(3)
         sel.select_by_value(state)
 
+        time.sleep(2)
         error_type=2
         sel = Select(driver.find_element(By.ID, "city"))
+
         time.sleep(3)
         sel.select_by_value(city)
 
+        time.sleep(2)
         error_type=3
         sel = Select(driver.find_element(By.ID, "dealer"))
         time.sleep(4)
@@ -55,6 +74,9 @@ def Site_RunA(car,state,city,dealer_name):
 def GetDataA(car):
     global json_data
     time.sleep(5)
+    if (os.path.exists(json_data['dealer_csv_name'])==False):
+        print('Dealer csv not present or path is wrong')
+        return
     with open(json_data["dealer_csv_name"],'r') as f:
         reader=csv.reader(f)
         next(reader)
@@ -100,6 +122,11 @@ def Site_RunB(car,state,taluk,dealer_name):
 def GetDataB(car):
     global json_data,driver
     time.sleep(5)
+    if (os.path.exists(json_data['dealer_csv_name'])==False):
+        print('Dealer csv not present or path is wrong')
+        return
+    driver.refresh()
+    time.sleep(3)
     with open(json_data["dealer_csv_name"],'r') as f:
         reader=csv.reader(f)
         next(reader)
@@ -131,6 +158,7 @@ def tata_dealer_checks_start(car):
         print(car)
         driver.get(json_data[car + '_url'])
         driver.maximize_window()
+        time.sleep(10)
         if car in ["harrier", "tigor", "tiago"]: GetDataA(car)
         else: GetDataB(car)
 
@@ -148,4 +176,3 @@ def tata_dealer_checks_start(car):
         time.sleep(3)
         driver.close()
         driver.quit()
-

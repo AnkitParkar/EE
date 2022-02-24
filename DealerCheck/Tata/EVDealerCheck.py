@@ -2,20 +2,33 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-import time
-import json
+import time,json,csv,os
 import pyautogui as py
-import csv
+import pandas as pd
 
 def capt(str_inp):
     global json_data
+    if os.path.exists(json_data['ss_folder'])==False:
+        name='SS_FOLDER'
+        os.mkdir(name)
+        json_data['ss_folder'] = os.getcwd()+'/SS_FOLDER'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
     ms=py.screenshot()
     path=json_data['ss_folder']+str_inp+".jpeg"
     ms.save(path)
 
 def ErrorWrite(car,city,dealer_name,reason,ss_name):
     global json_data,driver
-    temp=dealer_name.split('-')[0]
+    if (os.path.exists(json_data['error_csv_file_name'])) == False:
+        em = pd.DataFrame(list())
+        em.to_csv('ErrorLogs.csv')
+        json_data['error_csv_file_name'] = os.getcwd() + '/ErrorLogs.csv'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
+
     with open(json_data['error_csv_file_name'],'a') as f:
         print("writng")
         writer=csv.writer(f)
@@ -28,12 +41,12 @@ def Site_Run(car,city,dealer_name):
     try:
         error_type=1
         sel = Select(driver.find_element(By.NAME, "city"))
-        driver.implicitly_wait(10)
+        time.sleep(2)
         sel.select_by_value(city)
 
         error_type=2
         sel = Select(driver.find_element(By.ID, "dealer"))
-        driver.implicitly_wait(10)
+        time.sleep(2)
         sel.select_by_visible_text(dealer_name)
 
     except:
@@ -49,6 +62,9 @@ def Site_Run(car,city,dealer_name):
 def get_data(car):
     global json_data
     try:
+        if (os.path.exists(json_data['ev_dealer_csv_name']) == False):
+            print('EV Dealer csv not present or path is wrong')
+            return
         with open(json_data["ev_dealer_csv_name"],'r') as f:
             reader=csv.reader(f)
             next(reader)
@@ -59,12 +75,12 @@ def get_data(car):
             for entry in reader:
                 city=entry[0].split('-')[1].upper()
                 dealer_name = entry[2] + '-' + entry[3].upper()
-                print(city,dealer_name)
+                #print(city,dealer_name)
                 Site_Run(car,city,dealer_name)
 
             print("All entries done")
     except Exception as err:
-        print(err,'\n error with Dealer csv access')
+        print(err,'\n error with Dealer csv ')
 
     finally:return
 
@@ -112,7 +128,7 @@ def ev_dealer_check_start(car):
         print(car)
         driver.get(json_data[car+'_url'])
         driver.maximize_window()
-        time.sleep(6)
+        time.sleep(15)
         try:driver.find_element(By.XPATH,'//*[@id="gradient"]/div/div[2]/div[2]/div/button').click()#Checkout button tigor
         except:driver.find_element(By.XPATH,'/html/body/app-root/app-variants/div[2]/div/div/div[2]/div[2]/div').click()#Checkout button nexon
         time.sleep(5)

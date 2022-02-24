@@ -1,5 +1,8 @@
+import os,sys
+try:sys.path.append(os.path.dirname(os.getcwd()))
+except:print('Issue with assigning path')
+
 import json
-import csv
 from DealerCheck.Tata.TataDealerChecks import tata_dealer_checks_start
 from DealerCheck.Tata.EVDealerCheck import ev_dealer_check_start
 
@@ -17,3 +20,4 @@ def start():
         if json_data[i+'_check']=='Y': ev_dealer_check_start(i)
 
 start()
+sys.path.remove(os.getcwd())
