@@ -3,8 +3,8 @@ try:sys.path.append(os.path.dirname(os.getcwd()))
 except:print('Issue with assigning path')
 
 import json
-from DealerCheck.Tata.TataDealerChecks import tata_dealer_checks_start
-from DealerCheck.Tata.EVDealerCheck import ev_dealer_check_start
+from Tata.TataDealerChecks import tata_dealer_checks_start
+from Tata.EVDealerCheck import ev_dealer_check_start
 
 def start():
     car_list = ["safari_imag", "punch", "nexon_imag", "altroz", "safari", "altroz_imag","harrier", "tigor", "tiago"]
