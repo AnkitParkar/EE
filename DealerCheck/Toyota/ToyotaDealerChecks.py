@@ -2,30 +2,47 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-import time
-import json
+import time,json,csv,os
 import pandas as pd
-import csv
 import pyautogui as py
+
 
 def capt(str_inp):
     global json_data
-    ms=py.screenshot()
-    path=json_data["ss_folder"].strip()+str_inp+".jpeg"
+    if os.path.exists(json_data['ss_folder']) == False:
+        name = 'SS_FOLDER'
+        os.mkdir(name)
+        json_data['ss_folder'] = os.getcwd() + '/SS_FOLDER'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
+    ms = py.screenshot()
+    path = json_data["ss_folder"].strip() + '/' + str_inp + ".jpeg"
     ms.save(path)
 
 
 def Error_log(state,city,dealer,reason,url):
-    global json_data
+    global json_data, driver
+    if (os.path.exists(json_data['error_csv_file_name'])) == False:
+        em = pd.DataFrame(list())
+        em.to_csv('ErrorLogs.csv')
+        json_data['error_csv_file_name'] = os.getcwd() + '/ErrorLogs.csv'
+        a_file = open('TataSettings.json', "w")
+        json.dump(json_data, a_file, indent=2)
+        a_file.close()
+
     with open(json_data['error_csv_file_name'], 'a') as f:
+        print("writng")
         writer = csv.writer(f)
-        writer.writerow([state, city, dealer, reason,  url])
         ss_name = state + " " + city + " " + dealer
         capt(ss_name)
+        writer.writerow([state, city, dealer, reason,  url])
+
+        
 
 def Site_run(state, city):
     global df,json_data,driver
-    print('In Site_run')
+    #print('In Site_run')
     dealer_df=df.loc[(df['State']==state) & (df['City']==city)]
 
     try:
