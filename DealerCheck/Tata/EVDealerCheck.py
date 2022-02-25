@@ -60,7 +60,8 @@ def Site_Run(car,city,dealer_name):
         ErrorWrite(car,city,dealer_name,reason,ss_name)
 
 def get_data(car):
-    global json_data
+    global json_data,driver,status
+    status = True
     try:
         if (os.path.exists(json_data['ev_dealer_csv_name']) == False):
             print('EV Dealer csv not present or path is wrong')
@@ -76,7 +77,25 @@ def get_data(car):
                 city=entry[0].split('-')[1].upper()
                 dealer_name = entry[2] + '-' + entry[3].upper()
                 #print(city,dealer_name)
+
                 Site_Run(car,city,dealer_name)
+        if (os.path.exists(json_data['status_csv_file_name'])) == False:
+            em = pd.DataFrame(list())
+            em.to_csv('StatusLogs.csv')
+            json_data['status_csv_file_name'] = os.getcwd() + '/StatusLogs.csv'
+            a_file = open('TataSettings.json', "w")
+            json.dump(json_data, a_file, indent=2)
+            a_file.close()
+
+        if status:
+            with open(json_data['status_csv_file_name'], 'a') as f:
+                writer = csv.writer(f)
+                writer.writerow([car, 'Passed without issues'])
+        else:
+            with open(json_data['status_csv_file_name'], 'a') as f:
+                writer = csv.writer(f)
+                writer.writerow([car, 'Issues, logged in error csv'])
+
 
             print("All entries done")
     except Exception as err:
@@ -92,13 +111,13 @@ def removed_dealers(city, dealer_name):
 
         error_type = 2
         sel = Select(driver.find_element(By.NAME, "city"))
-        driver.implicitly_wait(10)
-        opt = sel.select_by_value(city)
+        time.sleep(2)
+        sel.select_by_value(city)
 
         error_type = 3
         sel = Select(driver.find_element(By.ID, "dealer"))
-        driver.implicitly_wait(10)
-        opt = sel.select_by_visible_text(dealer_name)
+        time.sleep(2)
+        sel.select_by_visible_text(dealer_name)
         error_typE = 4
 
     except:
